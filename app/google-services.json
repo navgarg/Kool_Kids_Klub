@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "166167711997",
+    "firebase_url": "https://kool-kids-klub-8c7b0.firebaseio.com",
+    "project_id": "kool-kids-klub-8c7b0",
+    "storage_bucket": "kool-kids-klub-8c7b0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:166167711997:android:c9ac417ba17d2824902e94",
+        "android_client_info": {
+          "package_name": "com.test.koolkidsklub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "166167711997-nu0baob4uqqptqep1nnv9gjf43bgsl1v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqD6V6G5QSV5aDQ9b9Ue4pfP41OwwOj7s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "166167711997-nu0baob4uqqptqep1nnv9gjf43bgsl1v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
