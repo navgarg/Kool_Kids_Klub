@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     //Create a state change listener, which will notify us if a user logs in
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -38,6 +41,14 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        TextView requestForEmail = (TextView) findViewById(R.id.request_for_id);
+        requestForEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(LoginActivity.this, "Temporarily unavailable", Toast.LENGTH_LONG).show();
+            }
+        });
+
         //Get instance of the Firebase authentication
         mAuth = FirebaseAuth.getInstance();
 
@@ -47,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if(firebaseAuth.getCurrentUser() != null){
                     startActivity(new Intent(LoginActivity.this, MapsActivity.class));
+                    finish();
                 }
             }
         };
@@ -77,6 +89,7 @@ public class LoginActivity extends AppCompatActivity {
             mAuth.signInWithEmailAndPassword(email, password)
                     //Runs when sign in is complete
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(!task.isSuccessful()){
