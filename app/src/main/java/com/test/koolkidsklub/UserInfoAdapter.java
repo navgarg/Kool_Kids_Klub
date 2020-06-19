@@ -38,6 +38,7 @@ public class UserInfoAdapter extends ArrayAdapter<UserInfo> {
         longTextView.setText("long: " + currentUser.getLong());
 
 
+
         return listItemView;
     }
 }

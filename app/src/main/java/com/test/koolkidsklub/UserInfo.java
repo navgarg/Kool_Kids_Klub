@@ -28,12 +28,12 @@ public class UserInfo {
         return mEmail;
     }
 
-    public String getLat() {
-        return Double.toString(mLat);
+    public double getLat() {
+        return mLat;
     }
 
-    public String getLong() {
-        return Double.toString(mLong);
+    public double getLong() {
+        return mLong;
     }
 
     public void setName(String mName) {
