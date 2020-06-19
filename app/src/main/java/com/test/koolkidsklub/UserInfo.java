@@ -1,13 +1,19 @@
 package com.test.koolkidsklub;
 
+import android.util.Log;
+
 public class UserInfo {
 
     private String mName;
     private String mEmail;
-    private String mLat;
-    private String mLong;
+    private double mLat;
+    private double mLong;
 
-    UserInfo(String name, String email, String lat, String Long){
+    UserInfo(){
+
+    }
+
+    UserInfo(String name, String email, double lat, double Long){
         mEmail = email;
         mName = name;
         mLat = lat;
@@ -18,35 +24,31 @@ public class UserInfo {
         return mName;
     }
 
-    public void setName(String mName) {
-        this.mName = mName;
-    }
-
     public String getEmail() {
         return mEmail;
+    }
+
+    public String getLat() {
+        return Double.toString(mLat);
+    }
+
+    public String getLong() {
+        return Double.toString(mLong);
+    }
+
+    public void setName(String mName) {
+        this.mName = mName;
     }
 
     public void setEmail(String mEmail) {
         this.mEmail = mEmail;
     }
 
-    public String getLat() {
-        return mLat;
-    }
-
-    public void setLat(String mLat) {
+    public void setLat(double mLat) {
         this.mLat = mLat;
     }
 
-    public String getLong() {
-        return mLong;
-    }
-
-    public void setLong(String mLong) {
+    public void setLong(double mLong) {
         this.mLong = mLong;
     }
-
-
-
-
 }

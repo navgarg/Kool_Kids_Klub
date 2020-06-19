@@ -32,10 +32,10 @@ public class UserInfoAdapter extends ArrayAdapter<UserInfo> {
         nameTextView.setText(currentUser.getName());
 
         TextView latTextView = (TextView) listItemView.findViewById(R.id.lat_text_view);
-        latTextView.setText(currentUser.getLat());
+        latTextView.setText("lat: " + currentUser.getLat());
 
         TextView longTextView = (TextView) listItemView.findViewById(R.id.long_text_view);
-        longTextView.setText(currentUser.getLong());
+        longTextView.setText("long: " + currentUser.getLong());
 
 
         return listItemView;
