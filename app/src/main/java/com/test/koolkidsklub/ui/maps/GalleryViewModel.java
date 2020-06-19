@@ -1,4 +1,4 @@
-package com.test.koolkidsklub.ui.gallery;
+package com.test.koolkidsklub.ui.maps;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
