@@ -7,6 +7,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -16,6 +18,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,7 +35,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         final SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -41,7 +43,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         gotoListView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an AlertDialog.Builder and set the message, and click listeners for the positive and negative buttons on the dialog.
                 AlertDialog.Builder builder = new AlertDialog.Builder(MapsActivity.this);
                 builder.setMessage("Do you want to open another Activity?");
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -58,7 +59,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         }
                     }
                 });
-                // Create and show the AlertDialog
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
 
@@ -92,6 +92,25 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu){
+        // Inflate the menu options from the res/menu/menu_catalog.xml file.
+        // This adds menu items to the app bar.
+        getMenuInflater().inflate(R.menu.menu_items, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        // User clicked on a menu option in the app bar overflow menu
+        // Respond to a click on the "Profile" menu option
+        if (item.getItemId() == R.id.action_profile) {
+            //Send intent to profile activity
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     /**

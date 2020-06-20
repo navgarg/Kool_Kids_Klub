@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="32dp"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="160dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/profile"/>
+
+    <TextView
+        android:id="@+id/profile_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        tools:text="Navya Garg"
+        android:textSize="30sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email:"
+        android:textStyle="bold"
+        android:textSize="25sp"/>
+
+    <TextView
+        android:id="@+id/profile_email"
+        android:layout_marginLeft="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="user@koolkidsklub.com"
+        android:textSize="22sp"/>
+
+    <TextView
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phone Number:"
+        android:textStyle="bold"
+        android:textSize="25sp"/>
+
+    <TextView
+        android:id="@+id/profile_phone"
+        android:layout_marginLeft="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="+919876543210"
+        android:textSize="22sp"/>
+
+    <TextView
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Latitude:"
+        android:textStyle="bold"
+        android:textSize="25sp"/>
+
+    <TextView
+        android:id="@+id/profile_lat"
+        android:layout_marginLeft="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="22.09812"
+        android:textSize="22sp"/>
+
+    <TextView
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Longitude:"
+        android:textStyle="bold"
+        android:textSize="25sp"/>
+
+    <TextView
+        android:id="@+id/profile_long"
+        android:layout_marginLeft="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="77.8921"
+        android:textSize="22sp"/>
+
+
+</LinearLayout>

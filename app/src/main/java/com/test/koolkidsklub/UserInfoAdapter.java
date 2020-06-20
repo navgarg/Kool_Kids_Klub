@@ -7,14 +7,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 public class UserInfoAdapter extends ArrayAdapter<UserInfo> {
 
     public UserInfoAdapter(Activity context, ArrayList<UserInfo> user) {
-        // Here, we initialize the ArrayAdapter's internal storage for the context and the list.
         super(context, 0, user);
     }
 
@@ -23,7 +20,7 @@ public class UserInfoAdapter extends ArrayAdapter<UserInfo> {
         View listItemView = convertView;
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(
-                    R.layout.list_item, parent, false);
+                    R.layout.list_item_location, parent, false);
         }
 
         UserInfo currentUser = getItem(position);

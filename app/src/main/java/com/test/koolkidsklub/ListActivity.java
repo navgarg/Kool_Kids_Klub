@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.LoaderManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.Loader;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -93,5 +96,27 @@ public class ListActivity extends AppCompatActivity {
 //        // Loader reset, so we can clear out our existing data.
 //        mAdapter.clear();
 //    }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu){
+        // Inflate the menu options from the res/menu/menu_catalog.xml file.
+        // adds menu items to  app bar.
+        getMenuInflater().inflate(R.menu.menu_items, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_profile:
+                // User clicked on the "Profile" menu option
+                startActivity(new Intent(ListActivity.this, ProfileActivity.class));
+                return true;
+            case R.id.action_missions:
+                startActivity(new Intent(ListActivity.this, MissionsActivity.class));
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
