@@ -17,12 +17,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ChatActivity"/>
+        <activity android:name=".AddMission"
+            android:label="Add New Mission"/>
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ChatActivity"
+            android:label="Relay Chat"/>
         <activity android:name=".MissionsPage" />
         <activity
             android:name=".MissionsActivity"
             android:label="Missions" />
-        <activity android:name=".ProfileActivity" />
+        <activity android:name=".ProfileActivity"
+            android:label="Profile"/>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -38,21 +51,10 @@
         <activity
             android:name=".ListActivity"
             android:label="Locations" />
-        <activity android:name=".LoginActivity" >
-            <intent-filter>
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".LoginActivity" />
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"
-            android:theme="@style/AppTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:label="@string/title_activity_maps"/>
     </application>
 
 </manifest>

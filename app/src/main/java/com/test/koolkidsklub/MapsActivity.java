@@ -1,6 +1,7 @@
 package com.test.koolkidsklub;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -11,6 +12,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -29,7 +32,6 @@ import static com.test.koolkidsklub.ListActivity.list;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    Button gotoListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,31 +41,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        gotoListView = findViewById(R.id.go_to_listview);
-        gotoListView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(MapsActivity.this);
-                builder.setMessage("Do you want to open another Activity?");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        //User clicked 'Yes', so open ListActivity
-                        startActivity(new Intent(MapsActivity.this, ListActivity.class));
-                    }
-                });
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        // User clicked the "No" button, so dismiss the dialog
-                        if (dialog != null) {
-                            dialog.dismiss();
-                        }
-                    }
-                });
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
-
-            }
-        });
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setActionBar(toolbar);
 
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("User");
@@ -95,36 +74,68 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
+
+
+
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+        Log.d("MapsActivity", "List.size(): " + list.size());
+    }
+
     @Override
     public boolean onCreateOptionsMenu (Menu menu){
         // Inflate the menu options from the res/menu/menu_catalog.xml file.
-        // This adds menu items to the app bar.
-        getMenuInflater().inflate(R.menu.menu_items, menu);
+        // adds menu items to  app bar.
+        getMenuInflater().inflate(R.menu.menu_map, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        // User clicked on a menu option in the app bar overflow menu
-        // Respond to a click on the "Profile" menu option
-        if (item.getItemId() == R.id.action_profile) {
-            //Send intent to profile activity
-            return true;
+        switch (item.getItemId()){
+            case R.id.action_profile:
+                // User clicked on the "Profile" menu option
+                startActivity(new Intent(MapsActivity.this, ProfileActivity.class));
+                return true;
+            case R.id.action_missions:
+                startActivity(new Intent(MapsActivity.this, MissionsActivity.class));
+                return true;
+            case R.id.action_chat:
+                startActivity(new Intent(MapsActivity.this, ChatActivity.class));
+                return true;
+
+            case R.id.action_goto_list:
+                openList();
+                return true;
+
+            case R.id.action_sign_out:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(MapsActivity.this, LoginActivity.class));
         }
+
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-        Log.d("MapsActivity", "List.size(): " + list.size());
+    private void openList(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(MapsActivity.this);
+        builder.setMessage("Do you want to open another Activity?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                //User clicked 'Yes', so open ListActivity
+                startActivity(new Intent(MapsActivity.this, ListActivity.class));
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked the "No" button, so dismiss the dialog
+                if (dialog != null) {
+                    dialog.dismiss();
+                }
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 }

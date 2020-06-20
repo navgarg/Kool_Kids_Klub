@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -13,6 +15,7 @@ import android.widget.ListView;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,6 +37,15 @@ public class MissionsActivity extends AppCompatActivity {
 
         final ArrayList<MissionsInfo> list_mission = new ArrayList<>();
         Log.d("MissionsActivity", "List_missions: " + list_mission);
+
+        FloatingActionButton fab = findViewById(R.id.fab_missions);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MissionsActivity.this, AddMission.class));
+                finish();
+            }
+        });
 
         ListView missions_list_view = (ListView) findViewById(R.id.missions_list_view);
         final MissionsInfoAdapter adapter = new MissionsInfoAdapter(this, list_mission);
@@ -73,5 +85,31 @@ public class MissionsActivity extends AppCompatActivity {
 
 
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu){
+        // Inflate the menu options from the res/menu/menu_catalog.xml file.
+        // adds menu items to  app bar.
+        getMenuInflater().inflate(R.menu.menu_items, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_profile:
+                // User clicked on the "Profile" menu option
+                startActivity(new Intent(MissionsActivity.this, ProfileActivity.class));
+                return true;
+            case R.id.action_missions:
+                startActivity(new Intent(MissionsActivity.this, MissionsActivity.class));
+                return true;
+            case R.id.action_chat:
+                startActivity(new Intent(MissionsActivity.this, ChatActivity.class));
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

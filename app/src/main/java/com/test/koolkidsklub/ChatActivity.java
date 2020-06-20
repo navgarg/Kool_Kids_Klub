@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -57,8 +59,7 @@ public class ChatActivity extends AppCompatActivity {
             displayChat();
         }
 
-        FloatingActionButton fab =
-                (FloatingActionButton)findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,7 +86,7 @@ public class ChatActivity extends AppCompatActivity {
                 ListView list_view = (ListView)findViewById(R.id.message_list);
 
                 adapter = new FirebaseListAdapter<ChatInfo>(this, ChatInfo.class,
-                        R.layout.message_item, FirebaseDatabase.getInstance().getReference().child("Chat")) {
+                        R.layout.message_item, FirebaseDatabase.getInstance().getReference().child("Chat").orderByChild("messageTime")) {
                     @Override
                     protected void populateView(View v, ChatInfo chat, int position) {
                         TextView messageText = (TextView)v.findViewById(R.id.message_text);
@@ -102,5 +103,31 @@ public class ChatActivity extends AppCompatActivity {
 
                 list_view.setAdapter(adapter);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu){
+        // Inflate the menu options from the res/menu/menu_catalog.xml file.
+        // adds menu items to  app bar.
+        getMenuInflater().inflate(R.menu.menu_items, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_profile:
+                // User clicked on the "Profile" menu option
+                startActivity(new Intent(ChatActivity.this, ProfileActivity.class));
+                return true;
+            case R.id.action_missions:
+                startActivity(new Intent(ChatActivity.this, MissionsActivity.class));
+                return true;
+            case R.id.action_chat:
+                startActivity(new Intent(ChatActivity.this, ChatActivity.class));
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

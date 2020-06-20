@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -51,5 +52,31 @@ public class MissionsPage extends AppCompatActivity {
 //
 //        });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu){
+        // Inflate the menu options from the res/menu/menu_catalog.xml file.
+        // adds menu items to  app bar.
+        getMenuInflater().inflate(R.menu.menu_items, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_profile:
+                // User clicked on the "Profile" menu option
+                startActivity(new Intent(MissionsPage.this, ProfileActivity.class));
+                return true;
+            case R.id.action_missions:
+                startActivity(new Intent(MissionsPage.this, MissionsActivity.class));
+                return true;
+            case R.id.action_chat:
+                startActivity(new Intent(MissionsPage.this, ChatActivity.class));
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

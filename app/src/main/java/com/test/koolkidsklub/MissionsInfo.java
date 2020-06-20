@@ -15,7 +15,7 @@ public class MissionsInfo {
         mShort_desc = short_desc;
     }
 
-    MissionsInfo(String name, String long_desc, String short_desc){
+    MissionsInfo(String name, String short_desc, String long_desc){
         mName = name;
         mShort_desc = short_desc;
         mLong_desc = long_desc;
