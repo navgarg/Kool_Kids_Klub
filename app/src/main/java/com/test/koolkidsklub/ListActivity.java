@@ -47,6 +47,7 @@ public class ListActivity extends AppCompatActivity {
         listView.setAdapter(mAdapter);
 
 
+
 //        //Get a reference to ConnectivityManager to check state of network connectivity.
 //        ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
@@ -115,6 +116,10 @@ public class ListActivity extends AppCompatActivity {
                 return true;
             case R.id.action_missions:
                 startActivity(new Intent(ListActivity.this, MissionsActivity.class));
+                return true;
+            case R.id.action_chat:
+                startActivity(new Intent(ListActivity.this, ChatActivity.class));
+                return true;
         }
 
         return super.onOptionsItemSelected(item);

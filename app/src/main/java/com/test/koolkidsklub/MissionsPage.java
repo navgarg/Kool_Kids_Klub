@@ -1,11 +1,15 @@
 package com.test.koolkidsklub;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.TextView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MissionsPage extends AppCompatActivity {
 
@@ -28,6 +32,24 @@ public class MissionsPage extends AppCompatActivity {
 
         TextView long_desc = findViewById(R.id.mission_page_long_desc);
         long_desc.setText(intent.getStringExtra("long_desc"));
+//
+//        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
+//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//
+//                switch (item.getItemId()){
+//                    case R.id.action_profile:
+//                        // User clicked on the "Profile" menu option
+//                        startActivity(new Intent(MissionsPage.this, ProfileActivity.class));
+//                        return true;
+//                    case R.id.action_missions:
+//                        startActivity(new Intent(MissionsPage.this, MissionsActivity.class));
+//                }
+//                return true;
+//            }
+//
+//        });
 
     }
 }

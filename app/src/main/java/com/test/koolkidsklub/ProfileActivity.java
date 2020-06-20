@@ -36,7 +36,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
 
-        FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String email =user.getEmail();
         DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference().child("User");
         usersRef.orderByChild("email").equalTo(email).addValueEventListener(new ValueEventListener(){
