@@ -69,6 +69,7 @@ public class ChatActivity extends AppCompatActivity {
                 // of ChatMessage to the Firebase database
                 FirebaseDatabase.getInstance()
                         .getReference()
+                        .child("Chat")
                         .push()
                         .setValue(new ChatInfo(type_message.getText().toString(), user_name));
 
