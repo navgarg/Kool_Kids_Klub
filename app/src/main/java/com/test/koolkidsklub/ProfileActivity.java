@@ -34,28 +34,33 @@ public class ProfileActivity extends AppCompatActivity {
         final TextView lat_text = findViewById(R.id.profile_lat);
         final TextView long_text = findViewById(R.id.profile_long);
 
-
-
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String email =user.getEmail();
-        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference().child("User");
-        usersRef.orderByChild("email").equalTo(email).addValueEventListener(new ValueEventListener(){
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot datas: dataSnapshot.getChildren()){
-                    phone_text.setText(datas.child("phoneNumber").getValue().toString());
-                    name_text.setText(datas.child("name").getValue().toString());
-                    email_text.setText(datas.child("email").getValue().toString());
-                    lat_text.setText(datas.child("lat").getValue().toString());
-                    long_text.setText(datas.child("long").getValue().toString());
+
+        if(user!=null) {
+
+            String email = user.getEmail();
+            DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference().child("User");
+            usersRef.orderByChild("email").equalTo(email).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot datas : dataSnapshot.getChildren()) {
+                        phone_text.setText(datas.child("phoneNumber").getValue().toString());
+                        name_text.setText(datas.child("name").getValue().toString());
+                        email_text.setText(datas.child("email").getValue().toString());
+                        lat_text.setText(datas.child("lat").getValue().toString());
+                        long_text.setText(datas.child("long").getValue().toString());
+                    }
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
+                }
 
-        });
+            });
+        }
+        else{
+
+        }
     }
 }

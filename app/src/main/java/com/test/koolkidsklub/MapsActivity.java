@@ -60,7 +60,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             .position(newLocation)
                             .title(user.getName()));
 
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(newLocation));
                     Log.d("UserLoader", "User added");
                 }
             }

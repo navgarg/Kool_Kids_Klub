@@ -6,15 +6,15 @@ public class UserInfo {
 
     private String mName;
     private String mEmail;
-    private String mLat;
-    private String mLong;
+    private double mLat;
+    private double mLong;
     private String mPhone;
 
     UserInfo(){
 
     }
 
-    UserInfo(String name, String email, String lat, String Long, String phone){
+    UserInfo(String name, String email, double lat, double Long, String phone){
         mEmail = email;
         mName = name;
         mLat = lat;
@@ -30,11 +30,11 @@ public class UserInfo {
         return mEmail;
     }
 
-    public String getLat() {
+    public double getLat() {
         return mLat;
     }
 
-    public String getLong() {
+    public double getLong() {
         return mLong;
     }
 
@@ -46,11 +46,11 @@ public class UserInfo {
         this.mEmail = mEmail;
     }
 
-    public void setLat(String mLat) {
+    public void setLat(double mLat) {
         this.mLat = mLat;
     }
 
-    public void setLong(String mLong) {
+    public void setLong(double mLong) {
         this.mLong = mLong;
     }
 

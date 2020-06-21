@@ -40,7 +40,8 @@ public class AddMission extends AppCompatActivity {
                             .getReference()
                             .child("Missions")
                             .push()
-                            .setValue(new MissionsInfo(name_edit.getText().toString(), short_desc_edit.getText().toString(), long_desc_edit.getText().toString()));
+                            .setValue(new MissionsInfo(name_edit.getText().toString().trim(),
+                                    short_desc_edit.getText().toString().trim(), long_desc_edit.getText().toString().trim()));
 
                     name_edit.setText("");
                     short_desc_edit.setText("");
