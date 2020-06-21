@@ -41,11 +41,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        TextView requestForEmail = (TextView) findViewById(R.id.request_for_id);
-        requestForEmail.setOnClickListener(new View.OnClickListener() {
+        TextView signup = findViewById(R.id.sign_up);
+        signup.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Toast.makeText(LoginActivity.this, "Temporarily unavailable", Toast.LENGTH_LONG).show();
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, SignupActivity.class));
+                finish();
             }
         });
 

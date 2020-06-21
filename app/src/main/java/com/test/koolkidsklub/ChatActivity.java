@@ -53,6 +53,7 @@ public class ChatActivity extends AppCompatActivity {
 
         if(FirebaseAuth.getInstance().getCurrentUser() == null) {
             // User not signed in
+            Toast.makeText(ChatActivity.this, "Kindly sign in", Toast.LENGTH_LONG).show();
             startActivity(new Intent(ChatActivity.this, LoginActivity.class));
         } else {
             // User signed in.
