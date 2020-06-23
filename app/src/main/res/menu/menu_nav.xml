@@ -21,7 +21,7 @@
 
     <item
         android:id="@+id/action_chat"
-        android:title="Relay Chat"
+        android:title="Group Chat"
         android:enabled="true"
         android:iconTint="#FFFFFF"
         app:showAsAction="withText"

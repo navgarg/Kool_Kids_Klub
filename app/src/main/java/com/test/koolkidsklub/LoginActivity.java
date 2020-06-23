@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        TextView send_email = findViewById(R.id.send_email);
+        Button send_email = findViewById(R.id.send_email);
         send_email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

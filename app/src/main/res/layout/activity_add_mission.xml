@@ -13,7 +13,7 @@
             android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:text="Name: "/>
 
@@ -22,7 +22,7 @@
             android:layout_below="@+id/text_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:layout_marginTop="5dp"
             android:hint="Enter name of Mission"/>
 
@@ -32,7 +32,7 @@
             android:layout_below="@+id/edit_text_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
+            android:textSize="18sp"
             android:layout_marginTop="20dp"
             android:textStyle="bold"
             android:text="Short Description: "/>
@@ -43,7 +43,7 @@
             android:layout_below="@+id/text_sdesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:hint="Enter a short description"/>
 
     <TextView
@@ -51,7 +51,7 @@
         android:layout_below="@+id/edit_short_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:textSize="18sp"
         android:layout_marginTop="20dp"
         android:textStyle="bold"
         android:text="Descripton:"/>
@@ -61,16 +61,16 @@
         android:layout_below="@+id/text_ldesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:hint="Explain your mission"/>
 
-    <TextView
+    <Button
         android:id="@+id/add_mission"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
-        android:textStyle="bold"
         android:textSize="30sp"
+        android:textAllCaps="false"
         android:layout_marginBottom="30dp"
         android:layout_height="wrap_content"
         android:text="Add Mission"/>

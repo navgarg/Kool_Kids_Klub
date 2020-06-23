@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_margin="16dp"
+    android:padding="5dp"
     android:layout_height="match_parent"
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools">
@@ -14,7 +15,7 @@
         tools:text="Mission 1"
         android:paddingTop="5dp"
         android:layout_marginLeft="15dp"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="#000000"
         />
@@ -25,7 +26,7 @@
         android:paddingLeft="15dp"
         android:layout_marginBottom="15dp"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
+        android:textSize="15sp"
         tools:text="lorem ipsum"/>
 
 </LinearLayout>

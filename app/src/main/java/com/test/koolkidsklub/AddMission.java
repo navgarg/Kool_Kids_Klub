@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,7 +28,7 @@ public class AddMission extends AppCompatActivity {
         final EditText name_edit = findViewById(R.id.edit_text_name);
         final EditText short_desc_edit = findViewById(R.id.edit_short_desc);
         final EditText long_desc_edit = findViewById(R.id.edit_long_desc);
-        TextView add_mission = findViewById(R.id.add_mission);
+        Button add_mission = findViewById(R.id.add_mission);
 
         add_mission.setOnClickListener(new View.OnClickListener() {
             @Override

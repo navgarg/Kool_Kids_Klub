@@ -13,7 +13,7 @@
         tools:text="Navya Garg"
         android:paddingTop="5dp"
         android:layout_marginLeft="15dp"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="#000000"
         />
