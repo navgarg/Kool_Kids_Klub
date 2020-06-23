@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -20,6 +21,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+import org.w3c.dom.Text;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -44,33 +47,13 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        TextView signup = findViewById(R.id.sign_up);
-        signup.setOnClickListener(new View.OnClickListener() {
+        TextView send_email = findViewById(R.id.send_email);
+        send_email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                builder.setTitle("Kool Kids Klub Sign up");
-                builder.setMessage("This is a private club. Ask for id from admin?");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + "admin@koolkidsklub.com"));
-                        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Request for new user id and password for Kool Kids Klub");
-                        emailIntent.putExtra(Intent.EXTRA_TEXT, "Respected admin of Kool Kids Klub,\\nI would like to join your club of undercover revolutionaries."+
-                                "        \\nKindly provide me with the user id and password required to sign in.\\nThank you,\\nRegards.");
-
-                        startActivity(Intent.createChooser(emailIntent, "Send Email?"));
-                    }
-                });
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        if (dialog != null) {
-                            dialog.dismiss();
-                        }
-                    }
-                });
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
-                finish();
+                Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "admin@koolkidsklub.com", null));
+                startActivity(Intent.createChooser(intent, "Send email via.."));
+                Log.d("LoginActivity", "intent sent");
             }
         });
 

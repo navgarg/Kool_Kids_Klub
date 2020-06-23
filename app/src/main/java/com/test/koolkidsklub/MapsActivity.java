@@ -21,6 +21,8 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -71,6 +73,39 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.getMenu().findItem(R.id.action_map).setChecked(true);
+        navigation.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.action_profile:
+                        // User clicked on the "Profile" menu option
+                        startActivity(new Intent(MapsActivity.this, ProfileActivity.class));
+                        finish();
+                        break;
+                    case R.id.action_missions:
+                        startActivity(new Intent(MapsActivity.this, MissionsActivity.class));
+                        finish();
+                        break;
+                    case R.id.action_chat:
+                        startActivity(new Intent(MapsActivity.this, ChatActivity.class));
+                        finish();
+                        break;
+                    case R.id.action_goto_list:
+                        startActivity(new Intent(MapsActivity.this, ListActivity.class));
+                        finish();
+                        break;
+                    case R.id.action_map:
+                        startActivity(new Intent(MapsActivity.this, MapsActivity.class));
+                        finish();
+                        break;
+                }
+                return false;
+            }
+        });
+
     }
 
 
@@ -87,54 +122,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public boolean onCreateOptionsMenu (Menu menu){
         // Inflate the menu options from the res/menu/menu_catalog.xml file.
         // adds menu items to  app bar.
-        getMenuInflater().inflate(R.menu.menu_map, menu);
+        getMenuInflater().inflate(R.menu.menu_item, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.action_profile:
-                // User clicked on the "Profile" menu option
-                startActivity(new Intent(MapsActivity.this, ProfileActivity.class));
-                return true;
-            case R.id.action_missions:
-                startActivity(new Intent(MapsActivity.this, MissionsActivity.class));
-                return true;
-            case R.id.action_chat:
-                startActivity(new Intent(MapsActivity.this, ChatActivity.class));
-                return true;
-
-            case R.id.action_goto_list:
-                openList();
-                return true;
-
-            case R.id.action_sign_out:
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(MapsActivity.this, LoginActivity.class));
+        if (item.getItemId() == R.id.action_signout) {
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(MapsActivity.this, LoginActivity.class));
+            finish();
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    private void openList(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(MapsActivity.this);
-        builder.setMessage("Do you want to open another Activity?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                //User clicked 'Yes', so open ListActivity
-                startActivity(new Intent(MapsActivity.this, ListActivity.class));
-            }
-        });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                // User clicked the "No" button, so dismiss the dialog
-                if (dialog != null) {
-                    dialog.dismiss();
-                }
-            }
-        });
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
     }
 }

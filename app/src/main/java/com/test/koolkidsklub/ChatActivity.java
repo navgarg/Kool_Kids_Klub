@@ -110,23 +110,17 @@ public class ChatActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu (Menu menu){
         // Inflate the menu options from the res/menu/menu_catalog.xml file.
         // adds menu items to  app bar.
-        getMenuInflater().inflate(R.menu.menu_items, menu);
+        getMenuInflater().inflate(R.menu.menu_item, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.action_profile:
-                // User clicked on the "Profile" menu option
-                startActivity(new Intent(ChatActivity.this, ProfileActivity.class));
-                return true;
-            case R.id.action_missions:
-                startActivity(new Intent(ChatActivity.this, MissionsActivity.class));
-                return true;
-            case R.id.action_chat:
-                startActivity(new Intent(ChatActivity.this, ChatActivity.class));
-                return true;
+        if (item.getItemId() == R.id.action_signout) {
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(ChatActivity.this, LoginActivity.class));
+            finish();
+            return true;
         }
 
         return super.onOptionsItemSelected(item);

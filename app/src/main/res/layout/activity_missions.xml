@@ -23,4 +23,13 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         app:fabSize="mini" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itemTextColor="#FFFFFF"
+        android:background="@color/colorPrimary"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/menu_nav" />
 </RelativeLayout>

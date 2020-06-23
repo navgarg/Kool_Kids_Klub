@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Layout for a list of users -->
+
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent">
 
     <ListView
@@ -21,14 +23,21 @@
         android:layout_centerInParent="true"
         android:textAppearance="?android:textAppearanceMedium"/>
 
-<!--    <ProgressBar-->
-<!--        android:id="@+id/loader"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_centerInParent="true"/>-->
 
 
+
+<com.google.android.material.bottomnavigation.BottomNavigationView
+    android:id="@+id/navigation"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:itemTextColor="#FFFFFF"
+    android:background="@color/colorPrimary"
+    android:layout_alignParentBottom="true"
+    app:menu="@menu/menu_nav" />
 
 </RelativeLayout>
+
+
+
 
 

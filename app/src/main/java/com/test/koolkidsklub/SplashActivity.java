@@ -1,5 +1,6 @@
 package com.test.koolkidsklub;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,6 +10,8 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -28,15 +31,9 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i=new Intent(SplashActivity.this,
-                        LoginActivity.class);
-                //Intent is used to switch from one activity to another.
+          startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+          finish();
 
-                startActivity(i);
-                //invoke the SecondActivity.
-
-                finish();
-                //the current activity will get finished.
             }
         }, 3000);
     }

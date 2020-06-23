@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -64,23 +65,17 @@ public class AddMission extends AppCompatActivity {
     public boolean onCreateOptionsMenu (Menu menu){
         // Inflate the menu options from the res/menu/menu_catalog.xml file.
         // adds menu items to  app bar.
-        getMenuInflater().inflate(R.menu.menu_items, menu);
+        getMenuInflater().inflate(R.menu.menu_item, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.action_profile:
-                // User clicked on the "Profile" menu option
-                startActivity(new Intent(AddMission.this, ProfileActivity.class));
-                return true;
-            case R.id.action_missions:
-                startActivity(new Intent(AddMission.this, MissionsActivity.class));
-                return true;
-            case R.id.action_chat:
-                startActivity(new Intent(AddMission.this, ChatActivity.class));
-                return true;
+        if (item.getItemId() == R.id.action_signout) {
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(AddMission.this, LoginActivity.class));
+            finish();
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
