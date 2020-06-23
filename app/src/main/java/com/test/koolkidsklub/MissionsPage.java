@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -38,6 +40,7 @@ public class MissionsPage extends AppCompatActivity {
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.getMenu().findItem(R.id.action_missions).setChecked(true);
+        navigation.setItemIconTintList(ColorStateList.valueOf(Color.parseColor("#ffffff")));
         navigation.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -54,7 +57,6 @@ public class MissionsPage extends AppCompatActivity {
                         break;
                     case R.id.action_chat:
                         startActivity(new Intent(MissionsPage.this, ChatActivity.class));
-                        finish();
                         break;
                     case R.id.action_goto_list:
 

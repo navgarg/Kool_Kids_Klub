@@ -6,6 +6,8 @@ import androidx.fragment.app.FragmentActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -45,6 +47,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setActionBar(toolbar);
+        toolbar.setTitleTextColor(Color.WHITE);
 
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("User");
@@ -75,6 +78,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.getMenu().findItem(R.id.action_map).setChecked(true);
+
+        navigation.setItemIconTintList(ColorStateList.valueOf(Color.parseColor("#ffffff")));
         navigation.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -91,7 +96,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         break;
                     case R.id.action_chat:
                         startActivity(new Intent(MapsActivity.this, ChatActivity.class));
-                        finish();
                         break;
                     case R.id.action_goto_list:
                         startActivity(new Intent(MapsActivity.this, ListActivity.class));

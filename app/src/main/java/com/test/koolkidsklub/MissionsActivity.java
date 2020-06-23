@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -46,7 +48,6 @@ public class MissionsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MissionsActivity.this, AddMission.class));
-                finish();
             }
         });
 
@@ -62,14 +63,12 @@ public class MissionsActivity extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     MissionsInfo missionsInfo = snapshot.getValue(MissionsInfo.class);
                     list_mission.add(missionsInfo);
-                    Log.d("MissionsActivity", "MissionsInfo: " + missionsInfo  + "List: " + list_mission);
                 }
                 adapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.d("MissionsActivity", "in onCancelled()");
 
             }
         });
@@ -81,20 +80,19 @@ public class MissionsActivity extends AppCompatActivity {
                 intent.putExtra("long_desc", adapter.getItem(pos).getLong_desc());
                 intent.putExtra("name", adapter.getItem(pos).getname());
                 startActivity(intent);
-                Log.d("MissionsActivity", "Intent sent");
 
             }
         });
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.getMenu().findItem(R.id.action_missions).setChecked(true);
+        navigation.setItemIconTintList(ColorStateList.valueOf(Color.parseColor("#ffffff")));
         navigation.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.action_profile:
-                        // User clicked on the "Profile" menu option
                         startActivity(new Intent(MissionsActivity.this, ProfileActivity.class));
                         finish();
                         break;
@@ -104,7 +102,6 @@ public class MissionsActivity extends AppCompatActivity {
                         break;
                     case R.id.action_chat:
                         startActivity(new Intent(MissionsActivity.this, ChatActivity.class));
-                        finish();
                         break;
                     case R.id.action_goto_list:
 
